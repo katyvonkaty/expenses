@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
-import Expenses from "./Expenses"
 
 const ExpensesFilter = (props) => {
 
   const dropdownChangeHandler = (event) => {
     props.onChangeFilter(event.target.value)
   }
+
+
 
   return (
     <div className='expenses-filter'>
