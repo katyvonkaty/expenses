@@ -7,6 +7,7 @@ import Card from "../UI/Card";
 const ExpenseItem = (props) => {
   return (
     <>
+    <li>
     <Card className='expense-item'>
        <ExpenseDate date={props.date} />
        <div className='expense-item__description'>
@@ -14,8 +15,15 @@ const ExpenseItem = (props) => {
          <div className='expense-item__price'>${props.amount}</div>
        </div>
      </Card>
+     </li>
     </>
   );
 }
 
 export default ExpenseItem;
+
+//output content conditionally
+//form is always displated
+// add button to replace form
+// when button is clicked the form is shown
+// add cancel button to remove form 

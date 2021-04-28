@@ -6,6 +6,7 @@ const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
+  const[form, setForm] = useState("")
 
   const titleChangeHandler = (event) => {
     setEnteredTitle(event.target.value);
@@ -34,7 +35,15 @@ const ExpenseForm = (props) => {
     setEnteredDate("");
   };
 
+  const showComponent = () => {
+    console.log("clicked");
+  }
+
+
+
   return (
+    <>
+    <button onClick={showComponent}> </button>
     <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__controls">
@@ -67,9 +76,18 @@ const ExpenseForm = (props) => {
         </div>
       </div>
       <div className="new-expense_actions">
+        <button type="button" onClick={props.onCancel}> Cancel </button>
+        //type button does not submit the form
+        // add click fucntion when the button is pressed
+        //want the function in the newexense component
+
+        //onCancel function reveived from expense form
         <button type="submit"> Add Expense </button>
       </div>
     </form>
+
+
+    </>
   );
 };
 
