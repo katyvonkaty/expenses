@@ -1,93 +1,58 @@
-import React, { useState } from "react";
-import NewExpense from "./NewExpense";
-import ExpensesFilter from "../Expenses/ExpensesFilter";
+import React, {useState} from "react";
 
-const ExpenseForm = (props) => {
-  const [enteredTitle, setEnteredTitle] = useState("");
-  const [enteredAmount, setEnteredAmount] = useState("");
-  const [enteredDate, setEnteredDate] = useState("");
-  const[form, setForm] = useState("")
+const ExpenseForm = () => {
+
+  // const [title, setTitleChange]
+
+  const[title, setTitle] = useState("")
+  const[amount, setAmount] = useState("")
+  const[date, setDate] = useState("")
 
   const titleChangeHandler = (event) => {
-    setEnteredTitle(event.target.value);
-  };
-
-  const amountChangeHandler = (event) => {
-    setEnteredAmount(event.target.value);
-  };
-
-  const dateChangeHandler = (event) => {
-    setEnteredDate(event.target.value);
-  };
-
-  const submitHandler = (event) => {
-    event.preventDefault();
-
-    const expenseData = {
-      title: enteredTitle,
-      amount: enteredAmount,
-      date: new Date(enteredDate),
-    };
-
-    props.onSaveExpenseData(expenseData);
-    setEnteredTitle("");
-    setEnteredAmount("");
-    setEnteredDate("");
-  };
-
-  const showComponent = () => {
-    console.log("clicked");
+    setTitle(event.target.value);
   }
 
+  const amountChangeHandler = (event) => {
+    setAmount(event.target.value);
+  }
 
+  const dateChangeHandler = (event) => {
+    setDate(event.target.value);
+      {/* event target value always returns a string*/}
+  }
+
+  const submitHandler = (event) => {
+      event.preventDefault();
+
+      const expenseData = {
+        title: setTitle,
+        amount: setAmount,
+        date: new Date(setDate)
+      }
+
+      console.log(expenseData);
+  }
 
   return (
-    <>
-    <button onClick={showComponent}> </button>
-    <form onSubmit={submitHandler}>
+    <form onSubmit= {submitHandler}>
       <div className="new-expense__controls">
-        <div className="new-expense__controls">
+        <div className="new-expense__control">
           <label> Title </label>
-          <input
-            type="text"
-            onChange={titleChangeHandler}
-            value={enteredTitle}
-          />
+          <input type="text" onChange={titleChangeHandler} />
         </div>
-        <div className="new-expense__controls">
+        <div className="new-expense__control">
           <label> Amount </label>
-          <input
-            type="number"
-            min="0.01"
-            step="0.01"
-            onChange={amountChangeHandler}
-            value={enteredAmount}
-          />
+          <input type="amount" onChange={amountChangeHandler} min="0.01" step="0.01" />
         </div>
-        <div className="new-expense__controls">
+        <div className="new-expense__control">
           <label> Date </label>
-          <input
-            type="date"
-            min="2019-01-01"
-            max="2022-12-31"
-            onChange={dateChangeHandler}
-            value={enteredDate}
-          />
+          <input type="date" onChange={dateChangeHandler} min="2019-01-01" max="2022-12-31" />
         </div>
       </div>
-      <div className="new-expense_actions">
-        <button type="button" onClick={props.onCancel}> Cancel </button>
-        //type button does not submit the form
-        // add click fucntion when the button is pressed
-        //want the function in the newexense component
-
-        //onCancel function reveived from expense form
-        <button type="submit"> Add Expense </button>
+      <div className="new-expense__actions">
+        <button type="submit"> Add expense </button>
       </div>
     </form>
-
-
-    </>
   );
 };
 
